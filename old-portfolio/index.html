@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+
+    <link rel="icon" type="image/png" href="media/favicon/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="media/favicon/favicon-16x16.png" sizes="16x16">
+    <link rel="stylesheet" href="css/index.css">
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="scripts.js"></script>
+</head>
+<body>
+    <div id="wrapper">
+        <header class="overlay">
+            <a id="hamburgerMenu" onclick="toggleMenu();">
+                <i class="fa fa-bars"></i>
+            </a>
+            <div id="internalLinks">
+                <a href="media/resume.pdf">Resume</a>
+            </div>
+            <div id="title">
+                <h1>Jonathan Jan</h1>
+                <h2>Portfolio</h2>
+            </div>
+            <div id="outgoingLinks">
+                <div class="toolTipped">
+                    <a href="https://www.linkedin.com/in/jonjan/"><i class="fab fa-linkedin"></i></a>
+                    <span class="toolTip ttBottom">LinkedIn</span>
+                </div>
+                <div class="toolTipped">
+                    <a href="https://github.com/JonJanRB"><i class="fab fa-github"></i></a>
+                    <span class="toolTip ttBottom">GitHub</span>
+                </div>
+                <div class="toolTipped">
+                    <a href="mailto:jjanrb@gmail.com"><i class="fas fa-envelope"></i></a>
+                    <span class="toolTip ttBottom">Email</span>
+                </div>
+            </div>
+        </header>
+        <aside class="overlay">
+            <nav>
+                <h2>Projects</h2>
+                <ul>
+                    <li><a href="#buffScript" onclick="highlightNavigation('#buffScript')">Buffscript</a></li>
+                    <li><a href="#railGun" onclick="highlightNavigation('#railGun')">Railgun Editor</a></li>
+                    <li><a href="#whiteSpace" onclick="highlightNavigation('#whiteSpace')">Whitespace</a></li>
+                </ul>
+            </nav>
+            <a href="#aboutMe" id="myIcon" class="toolTipped">
+                <img src="media/logo.png" alt="Navigte to About Me">
+                <span class="toolTip ttRight">About Me</span>
+            </a>
+        </aside>
+        <div id="content">
+            <main>
+                <article id="buffScript">
+                    <h3>Buffscript</h3>
+                    <img src="media/little-light.png" alt="Geometry Dash gameplay">
+                    <p>
+                        In the side-scrolling game called Geometry Dash, I created my own programming syntax using objects called triggers which I called "Buffscript". I used these triggers to make my own system for writing code which could be used to make much more complicated and advanced procedures possible. I created a game utilizing this syntax which took about 2 months and the final result was very well received gaining over 100k downloads on this server and receiving the rating "epic" which is a very prestigious award to be given to a level.
+                        <br>
+                        I learned many different skills from the experience. The most important skill is problem solving. Because this is just an editor inside of a game, there are many severe limitations. Being able to solve problems and figure out creative solutions was almost a given if I wanted to make anything in it. The other skill I learned from it was how to make an engaging game. Using feedback I received on my first level that I had posted using my syntax, I created a game which was very well received gaining over 100k downloads called Little Light.
+                        <br>
+                        I am currently building a raycasting engine within the game
+                    </p>
+                    <img src="media/raycast.png" alt="Raycast">
+                    <a href="">Link</a>
+                </article>
+                <article id="railGun">
+                    <h3>Railgun Editor</h3>
+                    <img src="media/railgun-editor.png" alt="Editor for railgun">
+                    <p>
+                        Worked on a team creating a top down shooter. I specifically worked on the level editor which
+                        gave the user a rich experience by using MonoGame.Forms which allowed for having MonoGame run
+                        in a panel or control. Notable features included infinite map size, multiple layers, tile
+                        texture manipulation, texture slicing, entity placement, and hitbox placement.
+                    </p>
+                    <a href="">Link</a>
+                </article>
+                <article id="whiteSpace">
+                    <h3>Whitespace</h3>
+                    <img src="media/whitespace-logo.jpg" alt="">
+                    <p>
+                        This was created during a 1 week game jam for an arcade machine. The theme was "up" and the game
+                        had the player manipulate time and fling themselves up to avoid the white wave from below.
+                    </p>
+                    <a href="">Link</a>
+                    <img src="media/whitespace-gameplay.png" alt="whitespace gameplay">
+                </article>
+            </main>
+            <footer id="aboutMe">
+                <img src="media/headshot-small.jpg" alt="Jonathan Jan">
+                <h2>About Me</h2>
+                <p>
+                    I am Jonathan Jan, a 2nd year student at Rochester Institute of Technology majoring in Game Design and Development.
+                    <br>
+                    I love programming and creating things! I know C#, Java, HTML, CSS, and JavaScript.
+                </p>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

@@ -13,27 +13,153 @@ const init = () =>
 
 //#endregion
 
-//#region Module Creator
+//#region Objects
 
 /**
- * A container for portfolio entries
+ * An object that represents any portfolio module from which an HTML
+ * element can be generated from
  */
 class Module
 {
     /**
-     * Creates a new module with the specified parameters
-     * @param {string} title title of module
-     * @param {string} subtitle optional subtitle of module
-     * @param {string} coverImage path to main image
-     * @param {string} shortDescription brief summary of module for minimized use
-     * @param {string} fullDescription full description of module
-     * @param {string[]} gallery array of strings containing paths to all images to be shown in full view
-     * @param {string[]} links array of strings containing external links to references
+     * Returns an HTML element of this module
+     * @returns {HTMLElement} the generated element
      */
-    constructor(title, subtitle = null, coverImage = null, shortDescription, fullDescription,
-        gallery = null, links = null)
+    generateHTML()
+    {
+        return new HTMLElement();
+    }
+}
+
+/**
+ * An object that contains useful information about an image such as alt text
+ */
+class SemanticImage extends Module
+{
+    /**
+     * Creates a new semantic image
+     * @param {string} src source path to image
+     * @param {string} alt alt text to image
+     */
+    constructor(src, alt)
+    {
+        this.src = src;
+        this.alt = alt;
+    }
+
+    generateHTML()
+    {
+
+    }
+}
+
+/**
+ * An "enum" representing the orientations of a tooltip
+ * @readonly
+ * @enum {string}
+ */
+const TOOLTIP_POSITION =
+    Object.freeze({ UP: "ttUp", DOWN: "ttDown", LEFT: "ttDown", RIGHT: "ttRight" });
+
+/**
+ * An object representing a tool tipped element where something shows up upon hovering
+ */
+class Tooltip extends Module
+{
+    /**
+     * Creates a new tooltip with the specified text and position
+     * @param {string} text the text to be displayed by the tooltip
+     * @param {TOOLTIP_POSITION} position the position which the tooltip
+     * should be positioned
+     */
+    constructor(text, position)
+    {
+        this.text = text;
+        this.position = position;
+    }
+}
+
+/**
+ * An object that contains useful information about a link
+ */
+class SemanticLink extends Module
+{
+    /**
+     * Creates a new rich link
+     * @param {string} href link adress
+     * @param {string} text display text for link 
+     * @param {string} hover text to display when hovering over link
+     */
+    constructor(href, text, hover = null)
+    {
+        this.href = href;
+        this.text = text;
+        this.hover = hover;
+    }
+
+    /**
+     * Returns a tool tipped element from this link
+     * @returns {HTMLElement} generates the tool tipped element
+     */
+    generateHTML()
+    {
+        return createElement("div", {}, ["toolTipped"]).append(
+            createElement("a", { href: link.href, innerText: link.text }),
+            createElement("span", { }, ["toolTip", "ttBottom"])
+        );
+    }
+}
+
+/**
+ * An object that contains multiple images
+ */
+class Gallery extends Module
+{
+    /**
+     * Creates a new gallery
+     * @param {SemanticImage[]} images the array of semantic images
+     */
+    constructor(images)
+    {
+        this.images = images;
+    }
+
+    /**
+     * Returns the HTML for this gallery
+     * @returns {HTMLElement}
+     */
+    generateHTML()
+    {
+        const galleryHTML = createElement("div");
+        for(const image of this.images)
+        {
+            galleryHTML.append(image);
+        }
+        return galleryHTML;
+    }
+}
+
+/**
+ * A container for portfolio entries
+ */
+class Entry extends Module
+{
+    /**
+     * Creates a new entry with the specified parameters
+     * @param {string} title title of entry
+     * @param {string} id the html id that should be used for this entry
+     * @param {string} subtitle optional subtitle of entry
+     * @param {SemanticImage} coverImage main image
+     * @param {string} shortDescription brief summary of entry for minimized use
+     * @param {string} fullDescription full description of entry
+     * @param {Gallery} gallery gallery to be shown in full view
+     * @param {SemanticLink[]} links array of strings containing external links to references
+     */
+    constructor(title, id, shortDescription, fullDescription, subtitle = null, coverImage = null,
+        gallery = [], links = [])
     {
         this.title = title;
+        this.id = id;
         this.subtitle = subtitle;
         this.coverImage = coverImage;
         this.shortDescription = shortDescription;
@@ -43,12 +169,28 @@ class Module
     }
 
     /**
-     * Generates the HTML for this module
+     * Returns the HTML for this entry
+     * @returns {HTMLElement}
      */
     generateHTML()
     {
-        const container = document.createElement("article");
-        // container.
+        //Create preview html entry
+        const article = createElement("article", { id: "entry-" + this.id });
+
+        //Create inside html for entry, chaining to make things easier
+        article.chainAppend(
+            createElement("h3", { innerText: this.title }),
+            createElement("h4", { innerText: this.subtitle }),
+            createElement("img", { src: this.coverImage.src, alt: this.coverImage.alt }),
+            createElement("p", { innerText: this.shortDescription }),
+            this.gallery.generateHTML()
+        );
+
+        //Generate link HTML
+        for(const link of this.links)
+        {
+            article.append()
+        }
     }
 }
 
@@ -94,8 +236,19 @@ const createElement = (elementType, attributes,
  * Clears all inner html of the specified element
  * @param {HTMLElement} element element to clear
  */
-HTMLElement.prototype.clearElement = function()
-    { this.innerHTML = ""; }
+HTMLElement.prototype.clearElement = function() { this.innerHTML = ""; }
+
+/**
+ * Appends the specified elements and returns itself allowing
+ * for the chaining of append calls
+ * @param  {...Node | string} nodes The nodes or strings to append
+ * @returns This element
+ */
+HTMLElement.prototype.chainAppend = function(...nodes)
+{
+    this.append(nodes);
+    return this;
+}
 
 //#endregion
 

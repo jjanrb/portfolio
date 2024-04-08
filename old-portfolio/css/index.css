@@ -23,7 +23,7 @@
 
 
     --tool-tip-width: 10rem;
-    --tool-tip-spacing: 1rem;
+    --tool-tip-spacing: 4rem;
     --tool-text-color: white;
     --tool-tip-bg:#000000bb;
 
@@ -169,7 +169,7 @@ header
         width: 100%;
         justify-content: end;
         align-items: center;
-        height: 100%;
+        /* height: 100%; */
         padding-right: 2rem;
     }
     #outgoingLinks div
@@ -410,7 +410,7 @@ footer img
 
 .toolTip
 {
-    visibility: hidden;
+    /* visibility: hidden; */
     z-index: 2;
     position: absolute;
     font: var(--display-font);
@@ -427,27 +427,57 @@ footer img
 
     /* Basically center it so it simplifies positioning */
     transform: translate(-50%, -50%);
+    transform-origin: center center;
 
     pointer-events: none;
-}
-/* Tool tip shows up on the bottom */
-.toolTip, /* Default to show on the bottom */
-.ttBottom
-{
+
+    /* Tool tip begins at the center */
     left: 50%;
-    top: calc(100% + var(--tool-tip-spacing));
+    top: 50%;
+    /* transform: translateX(0px); */
+}
+
+/* Positioning */
+.ttDown
+{
+    /* transform: rotate(180deg) translateY(-100px) rotate(-180deg); */
+    translate: 0 calc(100% + var(--tool-tip-spacing));
+}
+
+.ttUp
+{
+    /* left: 50%;
+    top: calc(-100% - var(--tool-tip-spacing)); */
+
+    translate: 0 calc(-100% - var(--tool-tip-spacing));
+    
 }
 
 .ttRight
 {
-    left: calc(150% + var(--tool-tip-spacing));
-    top: 50%;
+    /* left: calc(150% + var(--tool-tip-spacing));
+    top: 50%; */
+
+    translate: 0 var(--tool-tip-spacing);
+}
+
+.ttLeft
+{
+    /* right: calc(150% + var(--tool-tip-spacing));
+    top: 50%; */
+
+    translate: 0 var(--tool-tip-spacing);
 }
 
 .toolTipped:hover .toolTip
 {
     visibility: visible;
     scale: 1;
+
+    /* debug */
+    /* transition: transform 1s linear; */
+    /* transform: rotate(180deg) translateY(-100px) rotate(-180deg); */
+    /* transform: rotate(180deg) ; */
 }
 
 

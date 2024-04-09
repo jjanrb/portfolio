@@ -100,7 +100,7 @@ a:active
     display: grid;
     grid-template-areas:    "header header"
                             "sidebar main";
-    grid-template-columns: 20rem 1fr;
+    grid-template-columns: 20rem auto;
     grid-template-rows: auto 1fr;
 
     position: fixed;
@@ -210,29 +210,31 @@ aside
     display: flex;
     flex-direction: column;
 
-    /* overflow-y: auto; */
-
-    /* width: 20rem; */
+    height: 100%;
+    
+    overflow-y: hidden;
 
     translate: 0%;
 }
     aside nav
     {
         width: 100%;
-        overflow-y: auto;
+        height: 90%;
     }
         aside nav h2
         {
             font-size: 2.5rem;
             margin: 0;
             margin-left: 1rem;
-            width: fit-content;
+            width: max-content;
         }
         aside ul
         {
             list-style-type: none;
             padding: 0;
             margin: 0 1rem;
+            height: 100%;
+            overflow-y: auto;
         }
             aside ul li
             {
@@ -379,6 +381,14 @@ main article
         margin: 0rem;
         text-align: center;
     }
+    main article h4
+    {
+        font-size: 1rem;
+        margin: 0rem;
+        color: var(--sub-header-color);
+        font-style: italic;
+        text-align: center;
+    }
     main article img
     {
         max-width: 80%;
@@ -391,6 +401,11 @@ main article
     main article a
     {
         text-align: center;
+    }
+    main article .entrySubHeader
+    {
+        font-size: 1.1rem;
+        font-weight: bold;
     }
 
 .rowWrapGroup

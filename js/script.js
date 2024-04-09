@@ -125,9 +125,7 @@ const SCOPE = () =>
                 ([
                     new ModuleImage(IMG_PATH + "little-light-triggers.png", "A section of the editor view"),
                     new ModuleImage(IMG_PATH + "raycast.png", "Raycasting demonstration")
-                ]),
-                null,
-                null
+                ])
             ),
             new Entry
             (
@@ -149,12 +147,15 @@ const SCOPE = () =>
                 ([
                     new ModuleImage(IMG_PATH + "whitespace-gameplay.png", "alt"),
                     new ModuleImage(IMG_PATH + "chrono-fling-web-gameplay.png", "alt")
-                ])
+                ]),
+                null,
+                ENTRY_SIZE.STANDARD,
+                "Whitespace"
             ),
             new Entry
             (
                 "Railgun Editor",
-                "id",
+                "railgun",
                 "short",
                 "full",
                 new ModuleImage(IMG_PATH + ".png", "alt"),
@@ -230,7 +231,7 @@ const SCOPE = () =>
                 ([
                     new ModuleAudio(MUSIC_PATH + "whitespace.mp3", "[Ambient] Whitespace"),
                     new ModuleAudio(MUSIC_PATH + "subnaupolis.mp3", "[Environmental] Subnaupolis"),
-                    new ModuleAudio(MUSIC_PATH + "resurrections-cover.mp3", "[Video Game] Resurrections by Lena Raine (Cover)"),
+                    new ModuleAudio(MUSIC_PATH + "resurrections-cover.mp3", "[Video Game] Resurrections\nby Lena Raine (Cover)"),
                     new ModuleAudio(MUSIC_PATH + "low-light.mp3", "[Lo-fi] Low Light"),
                     new ModuleAudio(MUSIC_PATH + "hidden-clockwork.mp3", "[Experimental] Hidden Clockwork"),
                     new ModuleAudio(MUSIC_PATH + "anthem-of-the-lost.mp3", "[Build up] Anthem of the Lost"),
@@ -438,7 +439,7 @@ const SCOPE = () =>
             audioElement.append(createElement("source", { src: this.src, type: this.type }));
 
             const wrapper = createElement("div");
-            wrapper.append(createElement("h4", { innerText: this.title }))
+            wrapper.append(createElement("p", { innerText: this.title }, ["entrySubHeader"]));
             wrapper.append(audioElement);
 
             return wrapper;
@@ -640,7 +641,6 @@ const SCOPE = () =>
             //Add highlight functionality
             navigationLink.addEventListener("click", () => 
             {
-                console.log(queryID);
                 let highlightElement = document.querySelector(queryID);
                 if(highlightElement)
                 {

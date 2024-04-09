@@ -521,7 +521,7 @@ footer img
         /* display: none; */
         position: fixed;
         translate: -100%;
-        transition: translate 0.5s ease-out;
+        transition: translate 0.2s ease-out;
         margin-top: var(--mobile-header-height);
         height: calc(100% - var(--mobile-header-height));
         z-index: 1;
@@ -571,7 +571,11 @@ footer img
 /* Very tiny */
 @media screen and (max-width: 375px)
 {
-    header a
+    :root
+    {
+        font-size: 10px;
+    }
+    /* header a
     {
         font-size: 0.5rem;
     }
@@ -594,7 +598,7 @@ footer img
     footer img
     {
         width: 75vw;
-    }
+    } */
 }
 
 /* #endregion */

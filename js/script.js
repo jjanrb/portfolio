@@ -9,6 +9,7 @@ const SCOPE = () =>
     //#region Initialization
 
     const MAIN_AREA = document.querySelector("main");
+    const NAVIGATION_LIST_ELEMENT = document.querySelector("aside ul");
 
     //File paths
     const MEDIA_PATH = "media/";
@@ -28,33 +29,81 @@ const SCOPE = () =>
      */
     const init = () =>
     {
-        ENTRIES.push
+        setupMobile();
+        
+        //Add entries
+        createEntries(ENTRIES);
+        populateContent(ENTRIES);
+    };
+
+    /**
+     * Sets up functionality for mobile devices
+     */
+    const setupMobile = () =>
+    {
+        //Menu functionality
+        document.querySelector("#hamburgerMenu").addEventListener("click", () => 
+        {
+            let sideBar = document.querySelector("aside");
+            //Use datasets in the future, but for now resuing code from when i didnt know js
+            if(sideBar.style.translate == "0%")
+            {
+                sideBar.style.translate = "-100%";
+            }
+            else
+            {
+                sideBar.style.translate = "0%";
+            }
+        });
+
+        //Turn off menu when resized big enough and mobile not needed
+        window.addEventListener("resize", () =>
+        {
+            let sideBar = document.querySelector("aside");
+            if(window.innerWidth >= 1000)
+            {
+                sideBar.style.translate = "0%";
+            }
+            else
+            {
+                sideBar.style.translate = "-100%";
+            }
+        });
+    }
+
+    /**
+     * Creates all portfolio entries and adds them to the specified array
+     * @param {Entry[]} entries the entries to add
+     */
+    const createEntries = entries =>
+    {
+        entries.push
         (
-            new Entry
-            (
-                "BuffScript",
-                "buffscript",
-                "In the side-scrolling game called Geometry Dash, I created my own programming syntax using objects called triggers which I called \"Buffscript\". I used these triggers to make my own system for writing code which could be used to make much more complicated and advanced procedures possible. I created a game utilizing this syntax which took about 2 months and the final result was very well received gaining over 100k downloads on this server and receiving the rating \"epic\" which is a very prestigious award to be given to a level.\n" +
-                "I learned many different skills from the experience. The most important skill is problem solving. Because this is just an editor inside of a game, there are many severe limitations. Being able to solve problems and figure out creative solutions was almost a given if I wanted to make anything in it. The other skill I learned from it was how to make an engaging game. Using feedback I received on my first level that I had posted using my syntax, I created a game which was very well received gaining over 100k downloads called Little Light.\n" +
-                "I am currently building a raycasting engine within the game",
-                null,
-                new ModuleImage(IMG_PATH + "little-light.png", "Geometry Dash gameplay"),
-                new LinksGroup
-                ([
-                    new ModuleLink
-                    (
-                        "https://people.rit.edu/jmj2097/235/tetris-grid/tetris-grid.html",
-                        "aaa",
-                        new Tooltip("tool", TOOLTIP_POSITION.UP)
-                    )
-                ]),
-                new Gallery
-                ([
-                    new ModuleImage(IMG_PATH + "raycast.png", "Raycast")
-                ]),
-                null,
-                null
-            ),
+            // new Entry
+            // (
+            //     "BuffScript",
+            //     "buffscript",
+            //     "In the side-scrolling game called Geometry Dash, I created my own programming syntax using objects called triggers which I called \"Buffscript\". I used these triggers to make my own system for writing code which could be used to make much more complicated and advanced procedures possible. I created a game utilizing this syntax which took about 2 months and the final result was very well received gaining over 100k downloads on this server and receiving the rating \"epic\" which is a very prestigious award to be given to a level.\n" +
+            //     "I learned many different skills from the experience. The most important skill is problem solving. Because this is just an editor inside of a game, there are many severe limitations. Being able to solve problems and figure out creative solutions was almost a given if I wanted to make anything in it. The other skill I learned from it was how to make an engaging game. Using feedback I received on my first level that I had posted using my syntax, I created a game which was very well received gaining over 100k downloads called Little Light.\n" +
+            //     "I am currently building a raycasting engine within the game",
+            //     null,
+            //     new ModuleImage(IMG_PATH + "little-light.png", "Geometry Dash gameplay"),
+            //     new LinksGroup
+            //     ([
+            //         new ModuleLink
+            //         (
+            //             "https://people.rit.edu/jmj2097/235/tetris-grid/tetris-grid.html",
+            //             "aaa",
+            //             new Tooltip("tool", TOOLTIP_POSITION.UP)
+            //         )
+            //     ]),
+            //     new Gallery
+            //     ([
+            //         new ModuleImage(IMG_PATH + "raycast.png", "Raycast")
+            //     ]),
+            //     null,
+            //     null
+            // ),
             new Entry
             (
                 "Test",
@@ -136,8 +185,6 @@ const SCOPE = () =>
                 ENTRY_SIZE.WIDE
             ),
         );
-
-        populateContent(ENTRIES);
     };
 
     /**
@@ -149,6 +196,7 @@ const SCOPE = () =>
         for(const entry of entries)
         {
             MAIN_AREA.append(entry.generateHTML());
+            NAVIGATION_LIST_ELEMENT.append(entry.generateNavigationHTML());
         }
     };
 
@@ -447,7 +495,7 @@ const SCOPE = () =>
         {
             super();
             this.title = title;
-            this.id = id;
+            this.id = "entry-" + id;
             this.coverImage = coverImage;
             this.shortDescription = shortDescription;
             this.fullDescription = fullDescription;
@@ -464,7 +512,7 @@ const SCOPE = () =>
          */
         generateHTML()
         {
-            const entryElement = createElement("article", { id: "entry-" + this.id }, [this.size]);
+            const entryElement = createElement("article", { id: this.id }, [this.size]);
 
             entryElement.append
             (
@@ -491,6 +539,38 @@ const SCOPE = () =>
             //         this.gallery.generateHTML(),
             //         this.links.generateHTML()
             //     );
+        }
+
+        /**
+         * Generates the navigation button for each entry
+         */
+        generateNavigationHTML()
+        {
+            //The id with '#' used for query selecting
+            const queryID = "#" + this.id;
+
+            //Create and append elements
+            const navigationListElement = createElement("li");
+            const navigationLink = createElement("a", {href: queryID, innerText: this.title});
+            navigationListElement.append(navigationLink);
+
+            //Add highlight functionality
+            navigationLink.addEventListener("click", () => 
+            {
+                console.log(queryID);
+                let highlightElement = document.querySelector(queryID);
+                if(highlightElement)
+                {
+                    highlightElement.style.borderColor = "#d3cf00";
+                    setTimeout(() =>
+                    {
+                        highlightElement.style = "";
+                    }, 500);
+                }
+            });
+            
+            //Return created element
+            return navigationListElement;
         }
     }
 
@@ -553,70 +633,6 @@ const SCOPE = () =>
 
     //#endregion
 
-
-    function toggleMenu()
-        {
-            let sideBar = document.querySelector("aside");
-            if(sideBar.style.translate == "0%")
-            {
-                sideBar.style.translate = "-100%";
-            }
-            else
-            {
-                sideBar.style.translate = "0%";
-            }
-        }
-
-        //https://developer.mozilla.org/en-US/docs/Web/API/Window/resize_event
-        addEventListener("resize", (event) => {});
-
-        onresize = (event) =>
-        {
-            let sideBar = document.querySelector("aside");
-            if(window.innerWidth >= 850)
-            {
-                sideBar.style.translate = "0%";
-            }
-            else
-            {
-                sideBar.style.translate = "-100%";
-            }
-        };
-        // https://developer.mozilla.org/en-US/docs/Web/API/setTimeout
-        function highlightNavigation(contentId)
-        {
-            let highlightElement = document.querySelector(contentId);
-            if(highlightElement)
-            {
-                highlightElement.style.borderColor = "#d3cf00";
-                setTimeout(() =>
-                {
-                    highlightElement.style = "";
-                }, 500);
-            }
-        }
-
-        // function maximizeArticle(contentId)
-        // {
-        //     let maximizeElement = document.querySelector(contentId);
-        //     if(maximizeElement)
-        //     {
-        //         if(maximizeElement.style.position === "fixed")
-        //         {
-        //             maximizeElement.style = "";
-        //         }
-        //         else
-        //         {
-        //             maximizeElement.style.position = "fixed";
-        //             maximizeElement.style.margin = "auto";
-        //             maximizeElement.style.zIndex = "10";
-        //             maximizeElement.style.display = "block";
-        //             maximizeElement.style.width = "100vw";
-        //             maximizeElement.style.height = "100vh";
-        //         }
-                
-        //     }
-        // }
     //Call init when page loads and all functions and classes have been created
     init();
 }

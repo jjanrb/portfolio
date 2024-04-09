@@ -83,6 +83,14 @@ a:active
     color: #eeff00;
 }
 
+.entryLink
+{
+    display: inline;
+    width: fit-content;
+    height: max-content;
+    padding: 1rem;
+}
+
 /* #endregion */
 
 /* #region Main Grid */
@@ -425,7 +433,7 @@ footer img
     border: var(--subcontent-border-width) solid var(--hover-bg);
     padding: calc(var(--content-border-padding) * 0.5)var(--content-border-padding);
     width: max-content;
-    max-width: 10rem;
+    max-width: 20rem;
 
     /* Basically center it so it simplifies positioning */
     transform: translate(-50%, -50%);

@@ -10,6 +10,14 @@ const SCOPE = () =>
 
     const MAIN_AREA = document.querySelector("main");
 
+    //File paths
+    const MEDIA_PATH = "media/";
+    const IMG_PATH = MEDIA_PATH + "images/";
+    const DOCUMENTS_PATH = MEDIA_PATH + "documents/";
+    const AUDIO_PATH = MEDIA_PATH + "audio/";
+    const MUSIC_PATH = AUDIO_PATH + "music/";
+    const SFX_PATH = AUDIO_PATH + "sounds/";
+
     /**
      * @type {Entry[]}
      */
@@ -22,59 +30,59 @@ const SCOPE = () =>
     {
         ENTRIES.push
         (
-            // new Entry
-            // (
-            //     "BuffScript",
-            //     "buffscript",
-            //     "In the side-scrolling game called Geometry Dash, I created my own programming syntax using objects called triggers which I called \"Buffscript\". I used these triggers to make my own system for writing code which could be used to make much more complicated and advanced procedures possible. I created a game utilizing this syntax which took about 2 months and the final result was very well received gaining over 100k downloads on this server and receiving the rating \"epic\" which is a very prestigious award to be given to a level.\n" +
-            //     "I learned many different skills from the experience. The most important skill is problem solving. Because this is just an editor inside of a game, there are many severe limitations. Being able to solve problems and figure out creative solutions was almost a given if I wanted to make anything in it. The other skill I learned from it was how to make an engaging game. Using feedback I received on my first level that I had posted using my syntax, I created a game which was very well received gaining over 100k downloads called Little Light.\n" +
-            //     "I am currently building a raycasting engine within the game",
-            //     null,
-            //     new ModuleImage("media/images/little-light.png", "Geometry Dash gameplay"),
-            //     new LinksGroup
-            //     ([
-            //         new ModuleLink
-            //         (
-            //             "https://people.rit.edu/jmj2097/235/tetris-grid/tetris-grid.html",
-            //             "aaa",
-            //             new Tooltip("tool", TOOLTIP_POSITION.UP)
-            //         )
-            //     ]),
-            //     new Gallery
-            //     ([
-            //         new ModuleImage("media/images/raycast.png", "Raycast")
-            //     ]),
-            //     null,
-            //     null
-            // ),
-            // new Entry
-            // (
-            //     "Test",
-            //     "tid",
-            //     "short",
-            //     "full",
-            //     new ModuleImage("media/images/logo.png", "alttext"),
-            //     new LinksGroup
-            //     ([
-            //         new ModuleLink
-            //         (
-            //             "https://people.rit.edu/jmj2097/235/tetris-grid/tetris-grid.html",
-            //             "aaa",
-            //             new Tooltip("tool", TOOLTIP_POSITION.UP)
-            //         )
-            //     ]),
-            //     new Gallery
-            //     ([
-            //         new ModuleImage("media/images/little-light.png", "alt1"),
-            //         new ModuleImage("media/images/little-light.png", "alt2")
-            //     ]),
-            //     new AudioGallery
-            //     ([
-            //         new ModuleAudio("media/audio/music/Porter (2).mp3", "parser"),
-            //         new ModuleAudio("media/audio/music/Porter (2).mp3", "porter")
-            //     ]),
-            //     "subtitle"
-            // ),
+            new Entry
+            (
+                "BuffScript",
+                "buffscript",
+                "In the side-scrolling game called Geometry Dash, I created my own programming syntax using objects called triggers which I called \"Buffscript\". I used these triggers to make my own system for writing code which could be used to make much more complicated and advanced procedures possible. I created a game utilizing this syntax which took about 2 months and the final result was very well received gaining over 100k downloads on this server and receiving the rating \"epic\" which is a very prestigious award to be given to a level.\n" +
+                "I learned many different skills from the experience. The most important skill is problem solving. Because this is just an editor inside of a game, there are many severe limitations. Being able to solve problems and figure out creative solutions was almost a given if I wanted to make anything in it. The other skill I learned from it was how to make an engaging game. Using feedback I received on my first level that I had posted using my syntax, I created a game which was very well received gaining over 100k downloads called Little Light.\n" +
+                "I am currently building a raycasting engine within the game",
+                null,
+                new ModuleImage(IMG_PATH + "little-light.png", "Geometry Dash gameplay"),
+                new LinksGroup
+                ([
+                    new ModuleLink
+                    (
+                        "https://people.rit.edu/jmj2097/235/tetris-grid/tetris-grid.html",
+                        "aaa",
+                        new Tooltip("tool", TOOLTIP_POSITION.UP)
+                    )
+                ]),
+                new Gallery
+                ([
+                    new ModuleImage(IMG_PATH + "raycast.png", "Raycast")
+                ]),
+                null,
+                null
+            ),
+            new Entry
+            (
+                "Test",
+                "tid",
+                "short",
+                "full",
+                new ModuleImage(IMG_PATH + "logo.png", "alttext"),
+                new LinksGroup
+                ([
+                    new ModuleLink
+                    (
+                        "https://people.rit.edu/jmj2097/235/tetris-grid/tetris-grid.html",
+                        "aaa",
+                        new Tooltip("tool", TOOLTIP_POSITION.UP)
+                    )
+                ]),
+                new Gallery
+                ([
+                    new ModuleImage(IMG_PATH + "little-light.png", "alt1"),
+                    new ModuleImage(IMG_PATH + "little-light.png", "alt2")
+                ]),
+                new AudioGallery
+                ([
+                    new ModuleAudio(MUSIC_PATH + "Porter (2).mp3", "parser"),
+                    new ModuleAudio(MUSIC_PATH + "Porter (2).mp3", "porter")
+                ]),
+                "subtitle"
+            ),
             new Entry
             (
                 "Music",
@@ -89,9 +97,37 @@ const SCOPE = () =>
                 null,
                 new AudioGallery
                 ([
-                    new ModuleAudio()
+                    new ModuleAudio(MUSIC_PATH + "whitespace.mp3", "[Ambient] Whitespace"),
+                    new ModuleAudio(MUSIC_PATH + "subnaupolis.mp3", "[Environmental] Subnaupolis"),
+                    new ModuleAudio(MUSIC_PATH + "resurrections-cover.mp3", "[Video Game] Resurrections by Lena Raine (Cover)"),
+                    new ModuleAudio(MUSIC_PATH + "low-light.mp3", "[Lo-fi] Low Light"),
+                    new ModuleAudio(MUSIC_PATH + "hidden-clockwork.mp3", "[Experimental] Hidden Clockwork"),
+                    new ModuleAudio(MUSIC_PATH + "anthem-of-the-lost.mp3", "[Build up] Anthem of the Lost")
                 ])
-            )
+            ),
+            new Entry
+            (
+                "Sound Effects",
+                "generalSounds",
+                "I have also created sounds for different projects for fun over the years. I usually make sounds through digital means.\nOne way I do this is by find existing sounds that are free to use, combining them with other sounds, synths, and effects to create the desired sound.\nAnother way I make sounds is through completely synthetic means such as retro/\"8-bit\" sounds. These are some sounds I have made:",
+                null,
+                null,
+                new LinksGroup
+                ([
+                    new ModuleLink("https://www.youtube.com/watch?v=Snk45mkwEE0", "The Wastes Video Showcase", new Tooltip("Made for IGME-119 (2d asset production)", TOOLTIP_POSITION.DOWN)),
+                    new ModuleLink("https://people.rit.edu/jmj2097/space/chrono-fling-old/", "Whitespace Web Remake", new Tooltip("Does not work on mobile", TOOLTIP_POSITION.DOWN))
+                ]),
+                null,
+                new AudioGallery
+                ([
+                    new ModuleAudio(MUSIC_PATH + "whitespace.mp3", "[Ambient] Whitespace"),
+                    new ModuleAudio(MUSIC_PATH + "subnaupolis.mp3", "[Environmental] Subnaupolis"),
+                    new ModuleAudio(MUSIC_PATH + "resurrections-cover.mp3", "[Video Game] Resurrections by Lena Raine (Cover)"),
+                    new ModuleAudio(MUSIC_PATH + "low-light.mp3", "[Lo-fi] Low Light"),
+                    new ModuleAudio(MUSIC_PATH + "hidden-clockwork.mp3", "[Experimental] Hidden Clockwork"),
+                    new ModuleAudio(MUSIC_PATH + "anthem-of-the-lost.mp3", "[Build up] Anthem of the Lost")
+                ])
+            ),
         );
 
         populateContent(ENTRIES);
@@ -208,8 +244,8 @@ const SCOPE = () =>
          */
         generateHTML()
         {
-            const linkHTML = createElement("div", {}, ["toolTipped"]);
-            linkHTML.append(createElement("a", { href: this.href, innerText: this.text }));
+            const linkHTML = createElement("div", {}, ["toolTipped", "entryLink"]);
+            linkHTML.append(createElement("a", { href: this.href, innerText: this.text, target: "_blank"}));
             if(this.tooltip) linkHTML.append(createElement
             (
                 "span",

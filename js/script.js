@@ -105,33 +105,33 @@ const SCOPE = () =>
         (
             new Entry
             (
-                "BuffScript",
-                "buffscript",
-                "In the side-scrolling game called Geometry Dash, I created my own programming syntax using objects called triggers which I called \"Buffscript\". I used these triggers to make my own system for writing code which could be used to make much more complicated and advanced procedures possible. I created a game utilizing this syntax which took about 2 months and the final result was very well received gaining over 100k downloads on this server and receiving the rating \"epic\" which is a very prestigious award to be given to a level.\n\n" +
-                "I learned many different skills from the experience. The most important skill is problem solving. Because this is just an editor inside of a game, there are many severe limitations. Being able to solve problems and figure out creative solutions was almost a given if I wanted to make anything in it. The other skill I learned from it was how to make an engaging game. Using feedback I received on my first level that I had posted using my syntax, I created a game which was very well received gaining over 100k downloads called Little Light.\n\n" +
-                "I am currently building a raycasting engine within the game",
+                "Music",
+                "generalMusic",
+                "I have composed digital music since I was in middle school for fun. I often make ambient or experimental songs. I have experience in FL Studio and Soundtrap as my DAWs (Digital Audio Workstations). Here are some highlights:",
                 null,
-                new ModuleImage(IMG_PATH + "little-light.png", "gameplay of a game I made called 'little light'"),
+                null,
                 new LinksGroup
                 ([
-                    new ModuleLink
-                    (
-                        "https://www.youtube.com/watch?v=V9vGlUOBcyc",
-                        "Showcase Gameplay Video",
-                        null
-                    )
+                    new ModuleLink("https://rebufff.newgrounds.com/audio", "All of my songs", null)
                 ]),
-                new Gallery
+                null,
+                new AudioGallery
                 ([
-                    new ModuleImage(IMG_PATH + "little-light-triggers.png", "A section of the editor view"),
-                    new ModuleImage(IMG_PATH + "raycast.png", "Raycasting demonstration")
-                ])
+                    new ModuleAudio(MUSIC_PATH + "whitespace.mp3", "[Ambient] Whitespace"),
+                    new ModuleAudio(MUSIC_PATH + "subnaupolis.mp3", "[Environmental] Subnaupolis"),
+                    new ModuleAudio(MUSIC_PATH + "resurrections-cover.mp3", "[Video Game] Resurrections\nby Lena Raine (Cover)"),
+                    new ModuleAudio(MUSIC_PATH + "low-light.mp3", "[Lo-fi] Low Light"),
+                    new ModuleAudio(MUSIC_PATH + "hidden-clockwork.mp3", "[Experimental] Hidden Clockwork"),
+                    new ModuleAudio(MUSIC_PATH + "anthem-of-the-lost.mp3", "[Build up] Anthem of the Lost"),
+                    new ModuleAudio(MUSIC_PATH + "distant-glimmer.mp3", "[Rock kind of] Distant Glimmer")
+                ]),
+                ENTRY_SIZE.WIDE
             ),
             new Entry
             (
                 "Chrono-Fling",
                 "whitespace",
-                "Originally called \"Whitespace\" this was created in C# and MonoGame during a 1 week game jam for an arcade machine. The theme was \"up\" and the game had the player manipulate time and fling themselves up to avoid the white wave from below.\n\nI re-made the game from the ground up using javascipt and pixi-js which is playable in the following link:",
+                "Originally called \"Whitespace\" this was created in C# and MonoGame during a 1 week game jam for an arcade machine. The theme was \"up\" and the game had the player manipulate time and fling themselves up to avoid the white wave from below.\n\nI created all the sfx, visuals, and code for this project.\n\nI re-made the game from the ground up using javascipt and pixi-js which is playable in the following link:",
                 "full",
                 new ModuleImage(IMG_PATH + "whitespace-logo.jpg", "Logo for the game"),
                 new LinksGroup
@@ -154,96 +154,26 @@ const SCOPE = () =>
             ),
             new Entry
             (
-                "Railgun Editor",
-                "railgun",
-                "short",
-                "full",
-                new ModuleImage(IMG_PATH + ".png", "alt"),
-                new LinksGroup
-                ([
-                    new ModuleLink
-                    (
-                        "https://",
-                        "label",
-                        new Tooltip("name", TOOLTIP_POSITION.UP)
-                    )
-                ]),
-                new Gallery
-                ([
-                    new ModuleImage(IMG_PATH + ".png", "alt")
-                ])
-            ),
-            new Entry
-            (
                 "Anime Searcher",
-                "id",
-                "short",
+                "animeSearcher",
+                "This project used the Jikan API which scrapes MyAnimeList for information. It implemented several filtering systems and a quick way to see many anime at a glance.\n\nA cool thing I created was a system to create foldable containers (like fancy dropdown menus) using JavaScript and CSS.",
                 "full",
-                new ModuleImage(IMG_PATH + ".png", "alt"),
+                new ModuleImage(IMG_PATH + "anime-searcher.png", "alt"),
                 new LinksGroup
                 ([
                     new ModuleLink
                     (
-                        "https://",
-                        "label",
-                        new Tooltip("name", TOOLTIP_POSITION.UP)
+                        "https://people.rit.edu/jmj2097/235/project2/",
+                        "Anime Searcher",
+                        new Tooltip("Created for IGME-235 (Intro to Web Dev)")
                     )
-                ]),
-                new Gallery
-                ([
-                    new ModuleImage(IMG_PATH + ".png", "alt")
                 ])
-            ),
-            new Entry
-            (
-                "name",
-                "id",
-                "short",
-                "full",
-                new ModuleImage(IMG_PATH + ".png", "alt"),
-                new LinksGroup
-                ([
-                    new ModuleLink
-                    (
-                        "https://",
-                        "label",
-                        new Tooltip("name", TOOLTIP_POSITION.UP)
-                    )
-                ]),
-                new Gallery
-                ([
-                    new ModuleImage(IMG_PATH + ".png", "alt")
-                ])
-            ),
-            new Entry
-            (
-                "Music",
-                "generalMusic",
-                "I have composed digital music since I was in middle school for fun. I often make ambient or experimental songs. Here are some highlights:",
-                null,
-                null,
-                new LinksGroup
-                ([
-                    new ModuleLink("https://rebufff.newgrounds.com/audio", "All of my songs", null)
-                ]),
-                null,
-                new AudioGallery
-                ([
-                    new ModuleAudio(MUSIC_PATH + "whitespace.mp3", "[Ambient] Whitespace"),
-                    new ModuleAudio(MUSIC_PATH + "subnaupolis.mp3", "[Environmental] Subnaupolis"),
-                    new ModuleAudio(MUSIC_PATH + "resurrections-cover.mp3", "[Video Game] Resurrections\nby Lena Raine (Cover)"),
-                    new ModuleAudio(MUSIC_PATH + "low-light.mp3", "[Lo-fi] Low Light"),
-                    new ModuleAudio(MUSIC_PATH + "hidden-clockwork.mp3", "[Experimental] Hidden Clockwork"),
-                    new ModuleAudio(MUSIC_PATH + "anthem-of-the-lost.mp3", "[Build up] Anthem of the Lost"),
-                    new ModuleAudio(MUSIC_PATH + "distant-glimmer.mp3", "[Rock kind of] Distant Glimmer")
-                ]),
-                ENTRY_SIZE.WIDE
             ),
             new Entry
             (
                 "Sound Effects",
                 "generalSounds",
-                "I have also created sounds for different projects for fun over the years. I usually make sounds through digital means.\nOne way I do this is by find existing sounds that are free to use, combining them with other sounds, synths, and effects to create the desired sound.\nAnother way I make sounds is through completely synthetic means such as retro/\"8-bit\" sounds. These are some sounds I have made:",
+                "I have also created sounds for different projects for fun over the years. I usually make sounds through digital means. I know Audacity but prefer to use something like FL Studio because it has more flexability.\nOne way I do this is by find existing sounds that are free to use, combining them with other sounds, synths, and effects to create the desired sound.\nAnother way I make sounds is through completely synthetic means such as retro/\"8-bit\" sounds. These are some sounds I have made:",
                 null,
                 null,
                 new LinksGroup
@@ -268,6 +198,59 @@ const SCOPE = () =>
                 ]),
                 ENTRY_SIZE.WIDE
             ),
+            new Entry
+            (
+                "BuffScript",
+                "buffscript",
+                "In the side-scrolling game called Geometry Dash, I created my own programming syntax using objects called triggers which I called \"Buffscript\". I used these triggers to make my own system for writing code which could be used to make much more complicated and advanced procedures possible. I created a game utilizing this syntax which took about 2 months and the final result was very well received gaining over 100k downloads on this server and receiving the rating \"epic\" which is a very prestigious award to be given to a level.\n\n" +
+                "I learned many different skills from the experience. The most important skill is problem solving. Because this is just an editor inside of a game, there are many severe limitations. Being able to solve problems and figure out creative solutions was almost a given if I wanted to make anything in it. The other skill I learned from it was how to make an engaging game. Using feedback I received on my first level that I had posted using my syntax, I created a game which was very well received gaining over 100k downloads called Little Light.\n\n" +
+                "I am currently building a raycasting engine within the game",
+                null,
+                new ModuleImage(IMG_PATH + "little-light.png", "gameplay of a game I made called 'little light'"),
+                new LinksGroup
+                ([
+                    new ModuleLink
+                    (
+                        "https://www.youtube.com/watch?v=V9vGlUOBcyc",
+                        "Showcase Gameplay Video",
+                        null
+                    )
+                ]),
+                new Gallery
+                ([
+                    new ModuleImage(IMG_PATH + "little-light-triggers.png", "A section of the editor view"),
+                    new ModuleImage(IMG_PATH + "raycast.png", "Raycasting demonstration")
+                ]),
+                null,
+                ENTRY_SIZE.WIDE
+            ),
+            new Entry
+            (
+                "Railgun",
+                "railgun",
+                "Collaboratively programmed a top-down shooter in 3 months using C# and MonoGame with a team of 5. Railgun is a top down shooter where the player’s health is used as ammo for their weapon.\n\nMy main job was creating the external map editor, but I also created many utilities and features for the game such as infinite procedural map stitching, tile mapping, map importing, a camera system, and music for the game.",
+                "full",
+                new ModuleImage(IMG_PATH + "railgun-gameplay.png", "gameplay of top-down shooter"),
+                new LinksGroup
+                ([
+                    new ModuleLink
+                    (
+                        "https://www.youtube.com/watch?v=YFr7DTgfsSU",
+                        "Editor Showcase Video",
+                        new Tooltip("Created for IGME-106 (C# and MonoGame)")
+                    ),
+                    new ModuleLink
+                    (
+                        "https://www.youtube.com/watch?v=uu7SUsyqSbg",
+                        "Gameplay Video",
+                        new Tooltip("Created for IGME-106 (C# and MonoGame)")
+                    )
+                ]),
+                new Gallery
+                ([
+                    new ModuleImage(IMG_PATH + "railgun-editor.png", "alt")
+                ])
+            )
         );
     };
 

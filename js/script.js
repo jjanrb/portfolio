@@ -114,19 +114,25 @@ const SCOPE = () =>
                 null,
                 new LinksGroup
                 ([
-                    new ModuleLink("https://www.youtube.com/watch?v=Snk45mkwEE0", "The Wastes Video Showcase", new Tooltip("Made for IGME-119 (2d asset production)", TOOLTIP_POSITION.DOWN)),
-                    new ModuleLink("https://people.rit.edu/jmj2097/space/chrono-fling-old/", "Whitespace Web Remake", new Tooltip("Does not work on mobile", TOOLTIP_POSITION.DOWN))
+                    new ModuleLink("https://www.youtube.com/watch?v=Snk45mkwEE0", "Realistic Sounds Video Showcase", new Tooltip("Made for IGME-119 (2d asset production)", TOOLTIP_POSITION.DOWN)),
+                    new ModuleLink("https://people.rit.edu/jmj2097/space/chrono-fling-old/", "Retro Sounds Web Game", new Tooltip("Does not work on mobile", TOOLTIP_POSITION.DOWN))
                 ]),
                 null,
                 new AudioGallery
                 ([
-                    new ModuleAudio(MUSIC_PATH + "whitespace.mp3", "[Ambient] Whitespace"),
-                    new ModuleAudio(MUSIC_PATH + "subnaupolis.mp3", "[Environmental] Subnaupolis"),
-                    new ModuleAudio(MUSIC_PATH + "resurrections-cover.mp3", "[Video Game] Resurrections by Lena Raine (Cover)"),
-                    new ModuleAudio(MUSIC_PATH + "low-light.mp3", "[Lo-fi] Low Light"),
-                    new ModuleAudio(MUSIC_PATH + "hidden-clockwork.mp3", "[Experimental] Hidden Clockwork"),
-                    new ModuleAudio(MUSIC_PATH + "anthem-of-the-lost.mp3", "[Build up] Anthem of the Lost")
-                ])
+                    new ModuleAudio(SFX_PATH + "wastes/Walk01.wav", "Adding effects to existing sounds\n\nWalk on sand 1"),
+                    new ModuleAudio(SFX_PATH + "wastes/Walk02.wav", "\n\nWalk on sand 2"),
+                    new ModuleAudio(SFX_PATH + "wastes/LandOnEnemy.wav", "Smash shell goo creature"),
+                    new ModuleAudio(SFX_PATH + "wastes/jump.wav", "Jump off sand"),
+                    new ModuleAudio(SFX_PATH + "wastes/LandOnGround.wav", "Land on sand"),
+                    new ModuleAudio(SFX_PATH + "wastes/Hurt.wav", "Player gets hit"),
+                    new ModuleAudio(SFX_PATH + "whitespace/Time.wav", "Creating sounds digitally\n\nSlow time"),
+                    new ModuleAudio(SFX_PATH + "whitespace/Swipe.wav", "\n\nSwipe through menu"),
+                    new ModuleAudio(SFX_PATH + "whitespace/Back.wav", "Bounce against wall"),
+                    new ModuleAudio(SFX_PATH + "whitespace/Orb.wav", "Break powerup item"),
+                    new ModuleAudio(SFX_PATH + "whitespace/Spike.wav", "Hit spike"),
+                ]),
+                ENTRY_SIZE.WIDE
             ),
         );
 
@@ -328,7 +334,7 @@ const SCOPE = () =>
          */
         generateHTML()
         {
-            const wrapper = createElement("div");
+            const wrapper = createElement("div", {}, ["rowWrapGroup"]);
             for(const module of this.modules)
             {
                 wrapper.append(module.generateHTML());
@@ -410,6 +416,14 @@ const SCOPE = () =>
     }
 
     /**
+     * An "enum" representing the orientations of a tooltip
+     * @readonly
+     * @enum {string}
+     */
+    const ENTRY_SIZE =
+        Object.freeze({ STANDARD: "entrySizeStandard", WIDE: "entrySizeWide"});
+
+    /**
      * A container for portfolio entries
      */
     class Entry extends Module
@@ -424,10 +438,11 @@ const SCOPE = () =>
          * @param {LinksGroup} links array of strings containing external links to references
          * @param {Gallery} gallery gallery to be shown in full view
          * @param {AudioGallery} audioGallery audio gallery to be shown
+         * @param {ENTRY_SIZE} size the size of the entry using the ENTRY_SIZE "enum"
          * @param {string} subtitle optional subtitle of entry
          */
         constructor(title, id, shortDescription, fullDescription, coverImage = null,
-            links = null, gallery = null, audioGallery = null, subtitle = null)
+            links = null, gallery = null, audioGallery = null, size = ENTRY_SIZE.STANDARD, subtitle = null)
         {
             super();
             this.title = title;
@@ -438,6 +453,7 @@ const SCOPE = () =>
             this.links = links;
             this.gallery = gallery;
             this.audioGallery = audioGallery;
+            this.size = size;
             this.subtitle = subtitle;
         }
 
@@ -447,7 +463,7 @@ const SCOPE = () =>
          */
         generateHTML()
         {
-            const entryElement = createElement("article", { id: "entry-" + this.id });
+            const entryElement = createElement("article", { id: "entry-" + this.id }, [this.size]);
 
             entryElement.append
             (

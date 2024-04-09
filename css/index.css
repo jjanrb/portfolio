@@ -356,6 +356,16 @@ main article
 
     transition: border-radius 0.2s ease-out, scale 0.2s ease-out, border-color 0.3s ease-out;
 }
+    main article.entrySizeWide
+    {
+        max-width: 60rem;
+        height: min-content;
+    }
+    main article.entrySizeStandard
+    {
+        max-width: 30rem;
+        height: min-content;
+    }
     main article:hover
     {
         border-radius: 0rem;
@@ -385,6 +395,14 @@ main article
     border-width: 0rem;
     border-radius: 0.5rem;
     width: 10rem;
+}
+
+.rowWrapGroup
+{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 /* #endregion */

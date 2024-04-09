@@ -71,6 +71,30 @@ const SCOPE = () =>
         });
     }
 
+    //#region Template
+            // new Entry
+            // (
+            //     "name",
+            //     "id",
+            //     "short",
+            //     "full",
+            //     new ModuleImage(IMG_PATH + ".png", "alt"),
+            //     new LinksGroup
+            //     ([
+            //         new ModuleLink
+            //         (
+            //             "https://",
+            //             "label",
+            //             new Tooltip("name", TOOLTIP_POSITION.UP)
+            //         )
+            //     ]),
+            //     new Gallery
+            //     ([
+            //         new ModuleImage(IMG_PATH + ".png", "alt")
+            //     ])
+            // ),
+    //#endregion
+
     /**
      * Creates all portfolio entries and adds them to the specified array
      * @param {Entry[]} entries the entries to add
@@ -79,58 +103,116 @@ const SCOPE = () =>
     {
         entries.push
         (
-            // new Entry
-            // (
-            //     "BuffScript",
-            //     "buffscript",
-            //     "In the side-scrolling game called Geometry Dash, I created my own programming syntax using objects called triggers which I called \"Buffscript\". I used these triggers to make my own system for writing code which could be used to make much more complicated and advanced procedures possible. I created a game utilizing this syntax which took about 2 months and the final result was very well received gaining over 100k downloads on this server and receiving the rating \"epic\" which is a very prestigious award to be given to a level.\n" +
-            //     "I learned many different skills from the experience. The most important skill is problem solving. Because this is just an editor inside of a game, there are many severe limitations. Being able to solve problems and figure out creative solutions was almost a given if I wanted to make anything in it. The other skill I learned from it was how to make an engaging game. Using feedback I received on my first level that I had posted using my syntax, I created a game which was very well received gaining over 100k downloads called Little Light.\n" +
-            //     "I am currently building a raycasting engine within the game",
-            //     null,
-            //     new ModuleImage(IMG_PATH + "little-light.png", "Geometry Dash gameplay"),
-            //     new LinksGroup
-            //     ([
-            //         new ModuleLink
-            //         (
-            //             "https://people.rit.edu/jmj2097/235/tetris-grid/tetris-grid.html",
-            //             "aaa",
-            //             new Tooltip("tool", TOOLTIP_POSITION.UP)
-            //         )
-            //     ]),
-            //     new Gallery
-            //     ([
-            //         new ModuleImage(IMG_PATH + "raycast.png", "Raycast")
-            //     ]),
-            //     null,
-            //     null
-            // ),
             new Entry
             (
-                "Test",
-                "tid",
-                "short",
-                "full",
-                new ModuleImage(IMG_PATH + "logo.png", "alttext"),
+                "BuffScript",
+                "buffscript",
+                "In the side-scrolling game called Geometry Dash, I created my own programming syntax using objects called triggers which I called \"Buffscript\". I used these triggers to make my own system for writing code which could be used to make much more complicated and advanced procedures possible. I created a game utilizing this syntax which took about 2 months and the final result was very well received gaining over 100k downloads on this server and receiving the rating \"epic\" which is a very prestigious award to be given to a level.\n\n" +
+                "I learned many different skills from the experience. The most important skill is problem solving. Because this is just an editor inside of a game, there are many severe limitations. Being able to solve problems and figure out creative solutions was almost a given if I wanted to make anything in it. The other skill I learned from it was how to make an engaging game. Using feedback I received on my first level that I had posted using my syntax, I created a game which was very well received gaining over 100k downloads called Little Light.\n\n" +
+                "I am currently building a raycasting engine within the game",
+                null,
+                new ModuleImage(IMG_PATH + "little-light.png", "gameplay of a game I made called 'little light'"),
                 new LinksGroup
                 ([
                     new ModuleLink
                     (
-                        "https://people.rit.edu/jmj2097/235/tetris-grid/tetris-grid.html",
-                        "aaa",
-                        new Tooltip("tool", TOOLTIP_POSITION.UP)
+                        "https://www.youtube.com/watch?v=V9vGlUOBcyc",
+                        "Showcase Gameplay Video",
+                        null
                     )
                 ]),
                 new Gallery
                 ([
-                    new ModuleImage(IMG_PATH + "little-light.png", "alt1"),
-                    new ModuleImage(IMG_PATH + "little-light.png", "alt2")
+                    new ModuleImage(IMG_PATH + "little-light-triggers.png", "A section of the editor view"),
+                    new ModuleImage(IMG_PATH + "raycast.png", "Raycasting demonstration")
                 ]),
-                new AudioGallery
+                null,
+                null
+            ),
+            new Entry
+            (
+                "Chrono-Fling",
+                "whitespace",
+                "Originally called \"Whitespace\" this was created in C# and MonoGame during a 1 week game jam for an arcade machine. The theme was \"up\" and the game had the player manipulate time and fling themselves up to avoid the white wave from below.\n\nI re-made the game from the ground up using javascipt and pixi-js which is playable in the following link:",
+                "full",
+                new ModuleImage(IMG_PATH + "whitespace-logo.jpg", "Logo for the game"),
+                new LinksGroup
                 ([
-                    new ModuleAudio(MUSIC_PATH + "Porter (2).mp3", "parser"),
-                    new ModuleAudio(MUSIC_PATH + "Porter (2).mp3", "porter")
+                    new ModuleLink
+                    (
+                        "https://people.rit.edu/jmj2097/space/chrono-fling-old/",
+                        "Chrono-Fling",
+                        new Tooltip("Created for IGME-235 (Intro to Web Dev)")
+                    )
                 ]),
-                "subtitle"
+                new Gallery
+                ([
+                    new ModuleImage(IMG_PATH + "whitespace-gameplay.png", "alt"),
+                    new ModuleImage(IMG_PATH + "chrono-fling-web-gameplay.png", "alt")
+                ])
+            ),
+            new Entry
+            (
+                "Railgun Editor",
+                "id",
+                "short",
+                "full",
+                new ModuleImage(IMG_PATH + ".png", "alt"),
+                new LinksGroup
+                ([
+                    new ModuleLink
+                    (
+                        "https://",
+                        "label",
+                        new Tooltip("name", TOOLTIP_POSITION.UP)
+                    )
+                ]),
+                new Gallery
+                ([
+                    new ModuleImage(IMG_PATH + ".png", "alt")
+                ])
+            ),
+            new Entry
+            (
+                "Anime Searcher",
+                "id",
+                "short",
+                "full",
+                new ModuleImage(IMG_PATH + ".png", "alt"),
+                new LinksGroup
+                ([
+                    new ModuleLink
+                    (
+                        "https://",
+                        "label",
+                        new Tooltip("name", TOOLTIP_POSITION.UP)
+                    )
+                ]),
+                new Gallery
+                ([
+                    new ModuleImage(IMG_PATH + ".png", "alt")
+                ])
+            ),
+            new Entry
+            (
+                "name",
+                "id",
+                "short",
+                "full",
+                new ModuleImage(IMG_PATH + ".png", "alt"),
+                new LinksGroup
+                ([
+                    new ModuleLink
+                    (
+                        "https://",
+                        "label",
+                        new Tooltip("name", TOOLTIP_POSITION.UP)
+                    )
+                ]),
+                new Gallery
+                ([
+                    new ModuleImage(IMG_PATH + ".png", "alt")
+                ])
             ),
             new Entry
             (
@@ -151,7 +233,8 @@ const SCOPE = () =>
                     new ModuleAudio(MUSIC_PATH + "resurrections-cover.mp3", "[Video Game] Resurrections by Lena Raine (Cover)"),
                     new ModuleAudio(MUSIC_PATH + "low-light.mp3", "[Lo-fi] Low Light"),
                     new ModuleAudio(MUSIC_PATH + "hidden-clockwork.mp3", "[Experimental] Hidden Clockwork"),
-                    new ModuleAudio(MUSIC_PATH + "anthem-of-the-lost.mp3", "[Build up] Anthem of the Lost")
+                    new ModuleAudio(MUSIC_PATH + "anthem-of-the-lost.mp3", "[Build up] Anthem of the Lost"),
+                    new ModuleAudio(MUSIC_PATH + "distant-glimmer.mp3", "[Rock kind of] Distant Glimmer")
                 ]),
                 ENTRY_SIZE.WIDE
             ),
@@ -164,19 +247,19 @@ const SCOPE = () =>
                 null,
                 new LinksGroup
                 ([
-                    new ModuleLink("https://www.youtube.com/watch?v=Snk45mkwEE0", "Realistic Sounds Video Showcase", new Tooltip("Made for IGME-119 (2d asset production)", TOOLTIP_POSITION.DOWN)),
-                    new ModuleLink("https://people.rit.edu/jmj2097/space/chrono-fling-old/", "Retro Sounds Web Game", new Tooltip("Does not work on mobile", TOOLTIP_POSITION.DOWN))
+                    new ModuleLink("https://www.youtube.com/watch?v=Snk45mkwEE0", "Realistic Sounds Video Showcase", new Tooltip("Made for IGME-119 (2D Asset Production)")),
+                    new ModuleLink("https://people.rit.edu/jmj2097/space/chrono-fling-old/", "Retro Sounds Web Game", new Tooltip("Does not work on mobile"))
                 ]),
                 null,
                 new AudioGallery
                 ([
-                    new ModuleAudio(SFX_PATH + "wastes/Walk01.wav", "Adding effects to existing sounds\n\nWalk on sand 1"),
+                    new ModuleAudio(SFX_PATH + "wastes/Walk01.wav", "Realistic sounds\n\nWalk on sand 1"),
                     new ModuleAudio(SFX_PATH + "wastes/Walk02.wav", "\n\nWalk on sand 2"),
                     new ModuleAudio(SFX_PATH + "wastes/LandOnEnemy.wav", "Smash shell goo creature"),
                     new ModuleAudio(SFX_PATH + "wastes/jump.wav", "Jump off sand"),
                     new ModuleAudio(SFX_PATH + "wastes/LandOnGround.wav", "Land on sand"),
                     new ModuleAudio(SFX_PATH + "wastes/Hurt.wav", "Player gets hit"),
-                    new ModuleAudio(SFX_PATH + "whitespace/Time.wav", "Creating sounds digitally\n\nSlow time"),
+                    new ModuleAudio(SFX_PATH + "whitespace/Time.wav", "Retro sounds\n\nSlow time"),
                     new ModuleAudio(SFX_PATH + "whitespace/Swipe.wav", "\n\nSwipe through menu"),
                     new ModuleAudio(SFX_PATH + "whitespace/Back.wav", "Bounce against wall"),
                     new ModuleAudio(SFX_PATH + "whitespace/Orb.wav", "Break powerup item"),
@@ -266,7 +349,7 @@ const SCOPE = () =>
          * @param {TOOLTIP_POSITION} position the position which the tooltip
          * should be positioned
          */
-        constructor(text, position)
+        constructor(text, position = TOOLTIP_POSITION.DOWN)
         {
             super();
             this.text = text;
@@ -518,11 +601,11 @@ const SCOPE = () =>
             (
                 createElement("h3", { innerText: this.title }),
                 createElement("h4", { innerText: this.subtitle }),
-                createElement("p", { innerText: this.shortDescription })
             );
 
             //If not null append
             if(this.coverImage) entryElement.append(createElement("img", { src: this.coverImage.src, alt: this.coverImage.alt }));
+            entryElement.append(createElement("p", { innerText: this.shortDescription }));
             if(this.gallery) entryElement.append(this.gallery.generateHTML());
             if(this.audioGallery) entryElement.append(this.audioGallery.generateHTML());
             if(this.links) entryElement.append(this.links.generateHTML());

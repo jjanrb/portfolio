@@ -340,7 +340,8 @@ main
     min-height: 100vh;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
 }
 
 main article
@@ -381,6 +382,7 @@ main article
     main article img
     {
         max-width: 80%;
+        max-height: 15rem;
         border: var(--subcontent-border-width) solid var(--subcontrast-color);
         border-radius: var(--content-border-radius);
         display: block;
@@ -390,12 +392,6 @@ main article
     {
         text-align: center;
     }
-#whiteSpace img
-{
-    border-width: 0rem;
-    border-radius: 0.5rem;
-    width: 10rem;
-}
 
 .rowWrapGroup
 {

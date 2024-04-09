@@ -103,7 +103,8 @@ const SCOPE = () =>
                     new ModuleAudio(MUSIC_PATH + "low-light.mp3", "[Lo-fi] Low Light"),
                     new ModuleAudio(MUSIC_PATH + "hidden-clockwork.mp3", "[Experimental] Hidden Clockwork"),
                     new ModuleAudio(MUSIC_PATH + "anthem-of-the-lost.mp3", "[Build up] Anthem of the Lost")
-                ])
+                ]),
+                ENTRY_SIZE.WIDE
             ),
             new Entry
             (

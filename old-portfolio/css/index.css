@@ -23,7 +23,7 @@
 
 
     --tool-tip-width: 10rem;
-    --tool-tip-spacing: 4rem;
+    --tool-tip-spacing: 2rem;
     --tool-text-color: white;
     --tool-tip-bg:#000000bb;
 
@@ -101,7 +101,6 @@ a:active
     left: 0;
     width: fit-content;
     height: 100%;
-    margin-left: 2rem;
     z-index: 1;
 }
 
@@ -194,7 +193,7 @@ aside
     grid-area: sidebar;
 
     background-color: var(--ui-bg);
-    padding-top: 2rem;
+    padding: 1rem;
 
     align-items: center;
 
@@ -202,6 +201,10 @@ aside
 
     display: flex;
     flex-direction: column;
+
+    /* overflow-y: auto; */
+
+    /* width: 20rem; */
 
     translate: 0%;
 }
@@ -367,7 +370,6 @@ main article
     }
     main article a
     {
-        display: none;
         text-align: center;
     }
 #whiteSpace img
@@ -410,7 +412,7 @@ footer img
 
 .toolTip
 {
-    /* visibility: hidden; */
+    visibility: hidden;
     z-index: 2;
     position: absolute;
     font: var(--display-font);
@@ -427,57 +429,46 @@ footer img
 
     /* Basically center it so it simplifies positioning */
     transform: translate(-50%, -50%);
-    transform-origin: center center;
+    transform-origin: 0 0;
 
     pointer-events: none;
 
-    /* Tool tip begins at the center */
-    left: 50%;
-    top: 50%;
+    scale: 90%;
+    transition: scale .1s ease-out;
+
     /* transform: translateX(0px); */
 }
 
 /* Positioning */
 .ttDown
 {
-    /* transform: rotate(180deg) translateY(-100px) rotate(-180deg); */
-    translate: 0 calc(100% + var(--tool-tip-spacing));
+    left: 50%;
+    top: calc(100% + var(--tool-tip-spacing));
 }
 
 .ttUp
 {
-    /* left: 50%;
-    top: calc(-100% - var(--tool-tip-spacing)); */
-
-    translate: 0 calc(-100% - var(--tool-tip-spacing));
+    left: 50%;
+    top: calc(-100% - var(--tool-tip-spacing));
     
 }
 
 .ttRight
 {
-    /* left: calc(150% + var(--tool-tip-spacing));
-    top: 50%; */
-
-    translate: 0 var(--tool-tip-spacing);
+    left: calc(125% + var(--tool-tip-spacing));
+    top: 50%;
 }
 
 .ttLeft
 {
-    /* right: calc(150% + var(--tool-tip-spacing));
-    top: 50%; */
-
-    translate: 0 var(--tool-tip-spacing);
+    right: calc(125% + var(--tool-tip-spacing));
+    top: 50%;
 }
 
 .toolTipped:hover .toolTip
 {
     visibility: visible;
     scale: 1;
-
-    /* debug */
-    /* transition: transform 1s linear; */
-    /* transform: rotate(180deg) translateY(-100px) rotate(-180deg); */
-    /* transform: rotate(180deg) ; */
 }
 
 
@@ -485,7 +476,7 @@ footer img
 
 /* #region Responsiveness */
 
-@media screen and (max-width: 850px)
+@media screen and (max-width: 1000px) /*old: 850*/
 {
     #wrapper
     {

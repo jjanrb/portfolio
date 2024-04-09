@@ -11,40 +11,90 @@ const SCOPE = () =>
     const MAIN_AREA = document.querySelector("main");
 
     /**
+     * @type {Entry[]}
+     */
+    const ENTRIES = [];
+
+    /**
      * Initalization of anything that needs to be called at the beginning
      */
     const init = () =>
     {
-        const testEntry = new Entry
+        ENTRIES.push
         (
-            "Test",
-            "tid",
-            "short",
-            "full",
-            "subtitle",
-            new ModuleImage("media/logo.png", "alttext"),
-            new Gallery
-            ([
-                new ModuleImage("media/little-light.png", "alt1"),
-                new ModuleImage("media/little-light.png", "alt2")
-            ]),
-            new AudioGallery
-            ([
-                new ModuleAudio("media/audio/music/Porter (2).mp3"),
-                new ModuleAudio("media/audio/music/Porter (2).mp3")
-            ]),
-            new LinksGroup
-            ([
-                new ModuleLink
-                (
-                    "https://people.rit.edu/jmj2097/235/tetris-grid/tetris-grid.html",
-                    "aaa",
-                    new Tooltip("tool", TOOLTIP_POSITION.UP)
-                )
-            ])
+            // new Entry
+            // (
+            //     "BuffScript",
+            //     "buffscript",
+            //     "In the side-scrolling game called Geometry Dash, I created my own programming syntax using objects called triggers which I called \"Buffscript\". I used these triggers to make my own system for writing code which could be used to make much more complicated and advanced procedures possible. I created a game utilizing this syntax which took about 2 months and the final result was very well received gaining over 100k downloads on this server and receiving the rating \"epic\" which is a very prestigious award to be given to a level.\n" +
+            //     "I learned many different skills from the experience. The most important skill is problem solving. Because this is just an editor inside of a game, there are many severe limitations. Being able to solve problems and figure out creative solutions was almost a given if I wanted to make anything in it. The other skill I learned from it was how to make an engaging game. Using feedback I received on my first level that I had posted using my syntax, I created a game which was very well received gaining over 100k downloads called Little Light.\n" +
+            //     "I am currently building a raycasting engine within the game",
+            //     null,
+            //     new ModuleImage("media/images/little-light.png", "Geometry Dash gameplay"),
+            //     new LinksGroup
+            //     ([
+            //         new ModuleLink
+            //         (
+            //             "https://people.rit.edu/jmj2097/235/tetris-grid/tetris-grid.html",
+            //             "aaa",
+            //             new Tooltip("tool", TOOLTIP_POSITION.UP)
+            //         )
+            //     ]),
+            //     new Gallery
+            //     ([
+            //         new ModuleImage("media/images/raycast.png", "Raycast")
+            //     ]),
+            //     null,
+            //     null
+            // ),
+            new Entry
+            (
+                "Test",
+                "tid",
+                "short",
+                "full",
+                new ModuleImage("media/images/logo.png", "alttext"),
+                new LinksGroup
+                ([
+                    new ModuleLink
+                    (
+                        "https://people.rit.edu/jmj2097/235/tetris-grid/tetris-grid.html",
+                        "aaa",
+                        new Tooltip("tool", TOOLTIP_POSITION.UP)
+                    )
+                ]),
+                new Gallery
+                ([
+                    new ModuleImage("media/images/little-light.png", "alt1"),
+                    new ModuleImage("media/images/little-light.png", "alt2")
+                ]),
+                new AudioGallery
+                ([
+                    new ModuleAudio("media/audio/music/Porter (2).mp3", "parser"),
+                    new ModuleAudio("media/audio/music/Porter (2).mp3", "porter")
+                ]),
+                "subtitle"
+            ),
+            // new Entry
+            // (
+            //     "Music",
+            //     "generalMusic",
+            //     "I have composed digital music since I was in middle school for fun. I often make ambient or experimental songs. Here are some highlights:",
+            //     null,
+            //     null,
+            //     new LinksGroup
+            //     ([
+            //         new ModuleLink("https://rebufff.newgrounds.com/audio", "All of my songs", null)
+            //     ]),
+            //     null,
+            //     new AudioGallery
+            //     ([
+            //         new ModuleAudio()
+            //     ])
+            // )
         );
-        MAIN_AREA.append(testEntry.generateHTML());
-        
+
+        populateContent(ENTRIES);
     };
 
     /**
@@ -159,12 +209,13 @@ const SCOPE = () =>
         generateHTML()
         {
             const linkHTML = createElement("div", {}, ["toolTipped"]);
-            linkHTML.append
+            linkHTML.append(createElement("a", { href: this.href, innerText: this.text }));
+            if(this.tooltip) linkHTML.append(createElement
             (
-                createElement("a", { href: this.href, innerText: this.text }),
-                createElement("span", { innerText: this.tooltip.text }, 
-                    ["toolTip", this.tooltip.position])
-            );
+                "span",
+                { innerText: this.tooltip.text }, 
+                ["toolTip", this.tooltip.position]
+            ));
             return linkHTML;
         }
     }
@@ -174,11 +225,13 @@ const SCOPE = () =>
         /**
          * Creates a new audio module
          * @param {string} src the path to the audio
+         * @param {string} title the title of the audio
          */
-        constructor(src)
+        constructor(src, title)
         {
             super();
             this.src = src;
+            this.title = title;
 
             //Determine file type
             this.type = this.getType(this.src);
@@ -207,9 +260,14 @@ const SCOPE = () =>
 
         generateHTML()
         {
-            const audioElement = createElement("audio", { controls: true/*, innerText: "Your browser does not support the audio element."*/ });
+            const audioElement = createElement("audio", { controls: true, innerText: "Your browser does not support the audio element." });
             audioElement.append(createElement("source", { src: this.src, type: this.type }));
-            return audioElement;
+
+            const wrapper = createElement("div");
+            wrapper.append(createElement("h4", { innerText: this.title }))
+            wrapper.append(audioElement);
+
+            return wrapper;
         }
     }
 
@@ -324,27 +382,27 @@ const SCOPE = () =>
          * Creates a new entry with the specified parameters
          * @param {string} title title of entry
          * @param {string} id the html id that should be used for this entry
-         * @param {string} subtitle optional subtitle of entry
          * @param {ModuleImage} coverImage main image
          * @param {string} shortDescription brief summary of entry for minimized use
          * @param {string} fullDescription full description of entry
+         * @param {LinksGroup} links array of strings containing external links to references
          * @param {Gallery} gallery gallery to be shown in full view
          * @param {AudioGallery} audioGallery audio gallery to be shown
-         * @param {LinksGroup} links array of strings containing external links to references
+         * @param {string} subtitle optional subtitle of entry
          */
-        constructor(title, id, shortDescription, fullDescription, subtitle = null, coverImage = null,
-            gallery = null, audioGallery = null, links = null)
+        constructor(title, id, shortDescription, fullDescription, coverImage = null,
+            links = null, gallery = null, audioGallery = null, subtitle = null)
         {
             super();
             this.title = title;
             this.id = id;
-            this.subtitle = subtitle;
             this.coverImage = coverImage;
             this.shortDescription = shortDescription;
             this.fullDescription = fullDescription;
+            this.links = links;
             this.gallery = gallery;
             this.audioGallery = audioGallery;
-            this.links = links;
+            this.subtitle = subtitle;
         }
 
         /**
@@ -359,12 +417,14 @@ const SCOPE = () =>
             (
                 createElement("h3", { innerText: this.title }),
                 createElement("h4", { innerText: this.subtitle }),
-                createElement("img", { src: this.coverImage.src, alt: this.coverImage.alt }),
-                createElement("p", { innerText: this.shortDescription }),
-                this.gallery.generateHTML(),
-                this.audioGallery.generateHTML(),
-                this.links.generateHTML()
+                createElement("p", { innerText: this.shortDescription })
             );
+
+            //If not null append
+            if(this.coverImage) entryElement.append(createElement("img", { src: this.coverImage.src, alt: this.coverImage.alt }));
+            if(this.gallery) entryElement.append(this.gallery.generateHTML());
+            if(this.audioGallery) entryElement.append(this.audioGallery.generateHTML());
+            if(this.links) entryElement.append(this.links.generateHTML());
 
             return entryElement;
             //Create inside html for entry, chaining to make things easier

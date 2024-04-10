@@ -117,7 +117,7 @@ const SCOPE = () =>
                 null,
                 new AudioGallery
                 ([
-                    new ModuleAudio(MUSIC_PATH + "whitespace.mp3", "[Ambient] Whitespace"),
+                    new ModuleAudio(MUSIC_PATH + "white-space.mp3", "[Ambient] Whitespace"),
                     new ModuleAudio(MUSIC_PATH + "subnaupolis.mp3", "[Environmental] Subnaupolis"),
                     new ModuleAudio(MUSIC_PATH + "resurrections-cover.mp3", "[Video Game] Resurrections\nby Lena Raine (Cover)"),
                     new ModuleAudio(MUSIC_PATH + "low-light.mp3", "[Lo-fi] Low Light"),
@@ -145,8 +145,8 @@ const SCOPE = () =>
                 ]),
                 new Gallery
                 ([
-                    new ModuleImage(IMG_PATH + "whitespace-gameplay.png", "alt"),
-                    new ModuleImage(IMG_PATH + "chrono-fling-web-gameplay.png", "alt")
+                    new ModuleImage(IMG_PATH + "whitespace-gameplay.png", "gameplay of whitespace"),
+                    new ModuleImage(IMG_PATH + "chrono-fling-web-gameplay.png", "gameplay of chrono-fling (web version)")
                 ]),
                 null,
                 ENTRY_SIZE.STANDARD,
@@ -158,7 +158,7 @@ const SCOPE = () =>
                 "animeSearcher",
                 "This project used the Jikan API which scrapes MyAnimeList for information. It implemented several filtering systems and a quick way to see many anime at a glance.\n\nA cool thing I created was a system to create foldable containers (like fancy dropdown menus) using JavaScript and CSS.",
                 "full",
-                new ModuleImage(IMG_PATH + "anime-searcher.png", "alt"),
+                new ModuleImage(IMG_PATH + "anime-searcher.png", "anime searcher website"),
                 new LinksGroup
                 ([
                     new ModuleLink
@@ -248,7 +248,7 @@ const SCOPE = () =>
                 ]),
                 new Gallery
                 ([
-                    new ModuleImage(IMG_PATH + "railgun-editor.png", "alt")
+                    new ModuleImage(IMG_PATH + "railgun-editor.png", "picture of railgun editor")
                 ])
             )
         );

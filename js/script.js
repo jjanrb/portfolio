@@ -173,7 +173,7 @@ const SCOPE = () =>
             (
                 "Sound Effects",
                 "generalSounds",
-                "I have also created sounds for different projects for fun over the years. I usually make sounds through digital means. I know Audacity but prefer to use something like FL Studio because it has more flexability.\nOne way I do this is by find existing sounds that are free to use, combining them with other sounds, synths, and effects to create the desired sound.\nAnother way I make sounds is through completely synthetic means such as retro/\"8-bit\" sounds. These are some sounds I have made:",
+                "I have also created sounds for different projects for fun over the years. I usually make sounds through digital means. I know Audacity but prefer to use something like FL Studio because it has more flexability.\nOne way I do this is by find existing sounds that are free to use, combining them with other sounds, synths, and effects to create the desired sound.\nAnother way I make sounds is through completely synthetic means such as retro/\"8-bit\" sounds using programs such as BFXR. These are some sounds I have made:",
                 null,
                 null,
                 new LinksGroup
@@ -202,7 +202,7 @@ const SCOPE = () =>
             (
                 "BuffScript",
                 "buffscript",
-                "In the side-scrolling game called Geometry Dash, I created my own programming syntax using objects called triggers which I called \"Buffscript\". I used these triggers to make my own system for writing code which could be used to make much more complicated and advanced procedures possible. I created a game utilizing this syntax which took about 2 months and the final result was very well received gaining over 100k downloads on this server and receiving the rating \"epic\" which is a very prestigious award to be given to a level.\n\n" +
+                "In the side-scrolling game called Geometry Dash, I created my own programming syntax using objects called triggers which I called \"Buffscript\". I used these triggers to make my own system for writing code which could be used to make much more complicated and advanced procedures possible. I created a game utilizing this syntax which took about 2 months and the final result was very well received gaining over 200k downloads on this server and receiving the rating \"epic\" which is a very prestigious award to be given to a level.\n\n" +
                 "I learned many different skills from the experience. The most important skill is problem solving. Because this is just an editor inside of a game, there are many severe limitations. Being able to solve problems and figure out creative solutions was almost a given if I wanted to make anything in it. The other skill I learned from it was how to make an engaging game. Using feedback I received on my first level that I had posted using my syntax, I created a game which was very well received gaining over 100k downloads called Little Light.\n\n" +
                 "I am currently building a raycasting engine within the game",
                 null,
@@ -228,7 +228,7 @@ const SCOPE = () =>
             (
                 "Railgun",
                 "railgun",
-                "Collaboratively programmed a top-down shooter in 3 months using C# and MonoGame with a team of 5. Railgun is a top down shooter where the player’s health is used as ammo for their weapon.\n\nMy main job was creating the external map editor, but I also created many utilities and features for the game such as infinite procedural map stitching, tile mapping, map importing, a camera system, and music for the game.",
+                "Collaboratively programmed a top-down shooter in 3 months using C# and MonoGame with a team of 5. Railgun is a top down shooter where the player's health is used as ammo for their weapon.\n\nMy main job was creating the external map editor, but I also created many utilities and features for the game such as infinite procedural map stitching, tile mapping, map importing, a camera system, and music for the game.",
                 "full",
                 new ModuleImage(IMG_PATH + "railgun-gameplay.png", "gameplay of top-down shooter"),
                 new LinksGroup

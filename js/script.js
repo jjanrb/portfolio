@@ -539,6 +539,122 @@ const SCOPE = () =>
     const ENTRY_SIZE =
         Object.freeze({ STANDARD: "entrySizeStandard", WIDE: "entrySizeWide"});
 
+    
+    // /**
+    //  * A container for portfolio entries
+    //  */
+    // class Entry extends Module
+    // {
+    //     /**
+    //      * Creates a new entry with the specified parameters
+    //      * @param {string} title title of entry
+    //      * @param {string} id the html id that should be used for this entry
+    //      * @param {ModuleImage} coverImage main image
+    //      * @param {string} shortDescription brief summary of entry for minimized use
+    //      * @param {string} fullDescription full description of entry
+    //      * @param {LinksGroup} links array of strings containing external links to references
+    //      * @param {Gallery} gallery gallery to be shown in full view
+    //      * @param {AudioGallery} audioGallery audio gallery to be shown
+    //      * @param {ENTRY_SIZE} size the size of the entry using the ENTRY_SIZE "enum"
+    //      * @param {string} subtitle optional subtitle of entry
+    //      */
+    //     constructor(title, id, shortDescription, fullDescription, coverImage = null,
+    //         links = null, gallery = null, audioGallery = null, size = ENTRY_SIZE.STANDARD, subtitle = null)
+    //     {
+    //         super();
+    //         this.title = title;
+    //         this.id = "entry-" + id;
+    //         this.coverImage = coverImage;
+    //         this.shortDescription = shortDescription;
+    //         this.fullDescription = fullDescription;
+    //         this.links = links;
+    //         this.gallery = gallery;
+    //         this.audioGallery = audioGallery;
+    //         this.size = size;
+    //         this.subtitle = subtitle;
+    //     }
+
+    //     /**
+    //      * Returns the HTML for this entry
+    //      * @returns {HTMLElement}
+    //      */
+    //     generateHTML()
+    //     {
+    //         const entryElement = createElement("article", { id: this.id }, [this.size]);
+
+    //         entryElement.append
+    //         (
+    //             createElement("h3", { innerText: this.title }),
+    //             createElement("h4", { innerText: this.subtitle }),
+    //         );
+
+    //         //If not null append
+    //         if(this.coverImage) entryElement.append(createElement("img", { src: this.coverImage.src, alt: this.coverImage.alt }));
+    //         entryElement.append(createElement("p", { innerText: this.shortDescription }));
+    //         if(this.gallery) entryElement.append(this.gallery.generateHTML());
+    //         if(this.audioGallery) entryElement.append(this.audioGallery.generateHTML());
+    //         if(this.links) entryElement.append(this.links.generateHTML());
+
+    //         return entryElement;
+    //         //Create inside html for entry, chaining to make things easier
+    //         // return createElement("article", { id: "entry-" + this.id })
+    //         //     .chainAppend
+    //         //     (
+    //         //         createElement("h3", { innerText: this.title }),
+    //         //         createElement("h4", { innerText: this.subtitle }),
+    //         //         createElement("img", { src: this.coverImage.src, alt: this.coverImage.alt }),
+    //         //         createElement("p", { innerText: this.shortDescription }),
+    //         //         this.gallery.generateHTML(),
+    //         //         this.links.generateHTML()
+    //         //     );
+    //     }
+
+    //     /**
+    //      * Generates the navigation button for each entry
+    //      */
+    //     generateNavigationHTML()
+    //     {
+    //         //The id with '#' used for query selecting
+    //         const queryID = "#" + this.id;
+
+    //         //Create and append elements
+    //         const navigationListElement = createElement("li");
+    //         const navigationLink = createElement("a", {href: queryID, innerText: this.title});
+    //         navigationListElement.append(navigationLink);
+
+    //         //Add highlight functionality
+    //         navigationLink.addEventListener("click", () => 
+    //         {
+    //             let highlightElement = document.querySelector(queryID);
+    //             if(highlightElement)
+    //             {
+    //                 highlightElement.style.borderColor = "#d3cf00";
+    //                 setTimeout(() =>
+    //                 {
+    //                     highlightElement.style = "";
+    //                 }, 500);
+    //             }
+    //         });
+            
+    //         //Return created element
+    //         return navigationListElement;
+    //     }
+
+    //     /**
+    //      * Appends the specified modules and returns itself
+    //      * @param  {...Module} modules Modules to append
+    //      * @returns this module
+    //      */
+    //     append(...modules)
+    //     {
+    //         for(const module of modules)
+    //         {
+                
+    //         }
+    //         return this;
+    //     }
+    // }
+    
     /**
      * A container for portfolio entries
      */
@@ -548,29 +664,24 @@ const SCOPE = () =>
          * Creates a new entry with the specified parameters
          * @param {string} title title of entry
          * @param {string} id the html id that should be used for this entry
-         * @param {ModuleImage} coverImage main image
-         * @param {string} shortDescription brief summary of entry for minimized use
-         * @param {string} fullDescription full description of entry
-         * @param {LinksGroup} links array of strings containing external links to references
-         * @param {Gallery} gallery gallery to be shown in full view
-         * @param {AudioGallery} audioGallery audio gallery to be shown
-         * @param {ENTRY_SIZE} size the size of the entry using the ENTRY_SIZE "enum"
-         * @param {string} subtitle optional subtitle of entry
+         * 
+         * @param {Object} [options] optional parameters for the entry
+         * @param {string} options.subtitle optional subtitle of entry
+         * @param {ModuleImage} options.coverImage main image
+         * @param {string} options.shortDescription brief summary of entry for minimized use
+         * @param {string} options.fullDescription full description of entry
+         * @param {LinksGroup} options.links link group module
+         * @param {Gallery} options.gallery gallery to be shown in full view
+         * @param {AudioGallery} options.audioGallery audio gallery to be shown
+         * @param {ENTRY_SIZE} options.size the size of the entry using the ENTRY_SIZE "enum"
          */
-        constructor(title, id, shortDescription, fullDescription, coverImage = null,
-            links = null, gallery = null, audioGallery = null, size = ENTRY_SIZE.STANDARD, subtitle = null)
+        constructor(title, id, options)
         {
             super();
             this.title = title;
-            this.id = "entry-" + id;
-            this.coverImage = coverImage;
-            this.shortDescription = shortDescription;
-            this.fullDescription = fullDescription;
-            this.links = links;
-            this.gallery = gallery;
-            this.audioGallery = audioGallery;
-            this.size = size;
-            this.subtitle = subtitle;
+            this.id = id;
+            this.size = ENTRY_SIZE.STANDARD;//Default value
+            Object.assign(this, options);
         }
 
         /**
@@ -637,6 +748,20 @@ const SCOPE = () =>
             
             //Return created element
             return navigationListElement;
+        }
+
+        /**
+         * Appends the specified modules and returns itself
+         * @param  {...Module} modules Modules to append
+         * @returns this module
+         */
+        append(...modules)
+        {
+            for(const module of modules)
+            {
+                
+            }
+            return this;
         }
     }
 

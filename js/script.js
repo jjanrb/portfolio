@@ -664,6 +664,7 @@ const SCOPE = () =>
          * Creates a new entry with the specified parameters
          * @param {string} title title of entry
          * @param {string} id the html id that should be used for this entry
+         * 
          * @param {Object} [options] optional parameters for the entry
          * @param {string} options.subtitle optional subtitle of entry
          * @param {ModuleImage} options.coverImage main image
@@ -676,17 +677,11 @@ const SCOPE = () =>
          */
         constructor(title, id, options)
         {
-            //Do any base module procedures
             super();
-
-            //Assign properties
             this.title = title;
             this.id = id;
             this.size = ENTRY_SIZE.STANDARD;//Default value
             Object.assign(this, options);
-
-            //Create module list
-            
         }
 
         /**
@@ -767,21 +762,6 @@ const SCOPE = () =>
                 
             }
             return this;
-        }
-
-        insertAtIndex(index, ...modules)
-        {
-
-        }
-
-        insertBeforeModule(existingModule, ...modules)
-        {
-
-        }
-
-        insertAfterModule(existingModule, ...modules)
-        {
-            
         }
     }
 

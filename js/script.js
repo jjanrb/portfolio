@@ -138,7 +138,7 @@ const SCOPE = () =>
                 ([
                     new ModuleLink
                     (
-                        "https://people.rit.edu/jmj2097/space/chrono-fling-old/",
+                        "https://people.rit.edu/jmj2097/space/chrono-fling/",
                         "Chrono-Fling",
                         new Tooltip("Created for IGME-235 (Intro to Web Dev)")
                     )
